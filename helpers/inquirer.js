@@ -40,13 +40,6 @@ const menuOpts = [
     }
 ]
 
-const press_intro = [
-    {
-        type: 'input',
-        name: 'enter',
-        message: 'Press Enter to continue...'
-    }
-]
 const inquirerMenu = async()=>{
     console.clear();
     console.log('======================================='.red);
@@ -59,8 +52,15 @@ const inquirerMenu = async()=>{
 }
 
 const pause = async () =>{
-    console.clear();
-
+    const press_intro = [
+        {
+            type: 'input',
+            name: 'enter',
+            message: `Press ${"Enter".green} to continue...`,
+        }
+    ]
+    //console.clear();
+    console.log('\n')
     const { input } = await inquirer.prompt(press_intro);
     return input;
 }
