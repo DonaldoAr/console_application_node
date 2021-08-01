@@ -5,7 +5,7 @@ class Tarea{
     desc = '';
     completadoEn = null;
     
-    constructor( desc ){
+    constructor( desc ){    // desc: Description
         this.id = uuidv4();
         this.desc = desc;
     }

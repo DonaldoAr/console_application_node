@@ -2,6 +2,7 @@ require('colors');
 const { inquirerMenu, 
         pause,
         leerInput } = require('./helpers/inquirer');
+        
 const Tarea = require('./models/tarea');
 const { Tareas } = require('./models/tareas');
 //const { mostrarMenu, pause } = require('./helpers/mensajes');
@@ -12,6 +13,7 @@ const main = async() =>{
     let opt = '';
     const tareas = new Tareas();
     do{ 
+        // Show a menu 
         opt = await inquirerMenu();
 
         switch (opt) {
@@ -21,7 +23,7 @@ const main = async() =>{
                 tareas.crearTarea( desc );
                 break;
             case '2':
-                console.log(tareas._listado);
+                console.log(tareas.listadoArr);
                 break;
             case '3':
                 console.log('Pendientes');
