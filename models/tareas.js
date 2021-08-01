@@ -1,7 +1,7 @@
 const Tarea = require("./tarea");
 
 class Tareas{
-    _listado = {};
+    _listado = {}; // A property
     
     // implement a getter for how see a list 
     get listadoArr(){
