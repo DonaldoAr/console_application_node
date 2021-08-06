@@ -10,12 +10,17 @@ class Tareas{
             const tarea = this._listado[ key ];
             listado.push( tarea );
         })
-
         return listado;
     }
 
     constructor(){
         this._listado = {}
+    }
+
+    cargarTareasFromArray( tareas = [] ){
+        tareas.forEach(tarea => {
+            this._listado[tareas.id] = tarea;
+        })
     }
 
     crearTarea(desc = ''){ // Description
