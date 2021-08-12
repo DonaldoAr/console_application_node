@@ -1,3 +1,4 @@
+require('colors');
 const Tarea = require("./tarea");
 
 class Tareas{
@@ -26,6 +27,18 @@ class Tareas{
     crearTarea(desc = ''){ // Description
         const tarea = new Tarea(desc); 
         this._listado[ tarea.id ] = tarea;
+    }
+
+    listadoCompleto(){
+        //console.log(this._listado);
+        //console.log('===================');
+        //console.log(this.listadoArr);
+        let a = 0;
+        Object.keys(this._listado).forEach( key =>{
+            a = a + 1; 
+            //console.log(key);
+            console.log(a + '.- ' +  this._listado[key].desc);
+        });
     }
 }
 
