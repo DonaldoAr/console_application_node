@@ -2,14 +2,12 @@ require('colors');
 const { inquirerMenu, 
         pause,
         leerInput } = require('./helpers/inquirer');
-const { guardarDB, leerdb } = require('./helpers/saveFile');
-        
+const { guardarDB, leerdb } = require('./helpers/saveFile');        
 const Tarea = require('./models/tarea');
 const { Tareas } = require('./models/tareas');
 //const { mostrarMenu, pause } = require('./helpers/mensajes');
 
 console.clear();
-
 const main = async() =>{
     let opt = '';
     const tareas = new Tareas();
@@ -43,5 +41,4 @@ const main = async() =>{
         await pause();
     }while(opt !== '0');
 }
-
 main();

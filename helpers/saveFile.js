@@ -7,7 +7,6 @@ const guardarDB = (data)=>{
     data = JSON.stringify(data); // We change object to string
     fs.writeFileSync(archivo, data);
 }
-
 const leerdb = () =>{
     if(!fs.existsSync(archivo)){
       return null;  
