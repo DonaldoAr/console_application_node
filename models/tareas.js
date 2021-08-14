@@ -47,8 +47,21 @@ class Tareas{
             const {desc, completadoEn} = tarea;
             const estado = ( completadoEn )? 'Completada'.green : 'Pendiente'.red;
             console.log(`${ idx }.- ${desc} :: ${estado}` )
-
         })
+    }
+
+    listarPendientesCompletadas( completadas = true){
+        console.log();
+
+        let comple = this.listadoArr.filter(comp => comp.completadoEn === null);
+        let no_comple = this.listadoArr.filter(comp => comp.completadoEn != null);
+
+        const dato = (completadas) ? comple : no_comple;
+        dato.forEach((tarea, i)=>{
+            const idx = `${i + 1}`.green;
+            const {desc, completadoEn} = tarea;
+            console.log(`${ idx }.- ${desc.red}`);
+        });        
     }
 }
 

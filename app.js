@@ -34,6 +34,10 @@ const main = async() =>{
                 break;
             case '3':
                 console.log('Pendientes');
+                tareas.listarPendientesCompletadas( true );
+                break;
+            case '4':
+                tareas.listarPendientesCompletadas( false ); // List of task we need to solve
                 break;
         }
         // Save a database
