@@ -2,7 +2,9 @@ require('colors');
 const { inquirerMenu, 
         pause,
         leerInput,
-        listadoTareasBorrar } = require('./helpers/inquirer');
+        listadoTareasBorrar,
+        confirmar,
+     } = require('./helpers/inquirer');
 const { guardarDB, leerdb } = require('./helpers/saveFile');        
 const Tarea = require('./models/tarea');
 const { Tareas } = require('./models/tareas');
@@ -44,11 +46,15 @@ const main = async() =>{
             case '6': // Trash
                 const id = await listadoTareasBorrar( tareas.listadoArr );
                 // To ask a question if you want to trash a task
-                console.log( {id} );
+                const ok = await confirmar('Esta seguro de continuar?  ')
+                if(ok){
+                    tareas.borrarTarea( id );
+                    console.log('Tarea borrada correctamente ...'.blue);
+                }
                 break;
         }
         // Save a database
-        //guardarDB(tareas.listadoArr)
+        guardarDB(tareas.listadoArr)
         await pause();
     }while(opt !== '0');
 }
