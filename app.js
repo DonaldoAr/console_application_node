@@ -1,7 +1,8 @@
 require('colors');
 const { inquirerMenu, 
         pause,
-        leerInput } = require('./helpers/inquirer');
+        leerInput,
+        listadoTareasBorrar } = require('./helpers/inquirer');
 const { guardarDB, leerdb } = require('./helpers/saveFile');        
 const Tarea = require('./models/tarea');
 const { Tareas } = require('./models/tareas');
@@ -9,8 +10,10 @@ const { Tareas } = require('./models/tareas');
 
 console.clear();
 const main = async() =>{
+
     let opt = '';
     const tareas = new Tareas();
+
     // Here we can read ur task 
     const tareasDB = leerdb();
     if( tareasDB ){
@@ -33,15 +36,19 @@ const main = async() =>{
                 tareas.listadoCompleto();
                 break;
             case '3':
-                console.log('Pendientes');
                 tareas.listarPendientesCompletadas( true );
                 break;
             case '4':
                 tareas.listarPendientesCompletadas( false ); // List of task we need to solve
                 break;
+            case '6': // Trash
+                const id = await listadoTareasBorrar( tareas.listadoArr );
+                // To ask a question if you want to trash a task
+                console.log( {id} );
+                break;
         }
         // Save a database
-        guardarDB(tareas.listadoArr)
+        //guardarDB(tareas.listadoArr)
         await pause();
     }while(opt !== '0');
 }
