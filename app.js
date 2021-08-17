@@ -46,10 +46,12 @@ const main = async() =>{
             case '6': // Trash
                 const id = await listadoTareasBorrar( tareas.listadoArr );
                 // To ask a question if you want to trash a task
-                const ok = await confirmar('Esta seguro de continuar?  ')
-                if(ok){
-                    tareas.borrarTarea( id );
-                    console.log('Tarea borrada correctamente ...'.blue);
+                if(id !== '0' ){
+                    const ok = await confirmar('Esta seguro de continuar?  ')
+                    if(ok){
+                        tareas.borrarTarea( id );
+                        console.log('Tarea borrada correctamente ...'.blue);
+                    }
                 }
                 break;
         }
